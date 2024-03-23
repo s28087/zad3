@@ -36,7 +36,7 @@ public abstract class Kontener
         Masa = 0;
     }
 
-    public void Zaladowanie(double kg)
+    public virtual void Zaladowanie(double kg)
     {
         double tempMasa = Masa + kg;
         

@@ -2,31 +2,40 @@
 
 namespace Zad3.Models;
 
+public enum TypLadunku
+{
+    Niebezpieczny,
+    Zwykły
+}
+
+
+
 //ładunek zwykły (mleko) i niebezpieczny (paliwo)
 public class KontnerL : Kontener, IHazardNotifier
 {
     
     //ZMIENIC NA ENUM
-    private string Typ;
-    public KontnerL(double maxLadownosc, double masa, double wysokosc, double wagaWlasna, double glebokosc, char rodzaj, string typ) : base(maxLadownosc, masa, wysokosc, wagaWlasna, glebokosc, rodzaj)
+    private TypLadunku typLadunku;
+    public KontnerL(double maxLadownosc, double masa, double wysokosc, double wagaWlasna, double glebokosc, char rodzaj, TypLadunku typLadunku) : base(maxLadownosc, masa, wysokosc, wagaWlasna, glebokosc, rodzaj)
     {
-        Typ = typ;
+        this.typLadunku = typLadunku;
     }
     
     public void Ostrzezenie()
     {
         Console.WriteLine("Niebezpieczna sytuacja w kontenerze numer " + id);
+        Console.WriteLine("Przekroczono dozwolona masę");
     }
 
     public void Zaladowanie(double kg)
     {
         double tempMasa = Masa + kg;
         
-        if (Typ == "niebezpieczny")
+        if (typLadunku == TypLadunku.Niebezpieczny)
         {
             if (tempMasa > (0.5 * MaxLadownosc))
             {
-                Console.WriteLine("Przekroczono dozwolona masę");
+                Ostrzezenie();
                 Console.WriteLine("Wcześniejsza masa: " + Masa);
                 Masa = tempMasa * 0.5;
                 Console.WriteLine("Aktualna masa: " + Masa);
@@ -36,11 +45,11 @@ public class KontnerL : Kontener, IHazardNotifier
             {
                 Masa = tempMasa;
             }
-        }else if (Typ == "bezpieczny")
+        }else if (typLadunku == TypLadunku.Zwykły)
         {
             if (tempMasa > (0.9 * MaxLadownosc))
             {
-                Console.WriteLine("Przekroczono dozwolona masę");
+                Ostrzezenie();
                 Console.WriteLine("Wcześniejsza masa: " + Masa);
                 Masa = tempMasa * 0.9;
                 Console.WriteLine("Aktualna masa: " + Masa);
