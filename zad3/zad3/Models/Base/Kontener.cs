@@ -3,8 +3,7 @@
 
 public abstract class Kontener
 {
-    
-    //dostep i modyfikacja (gettery i setteryz javy)
+
     protected double MaxLadownosc { get; set; }
     public double Masa { get; set; }
     protected double Wysokosc { get; set; }
@@ -28,7 +27,7 @@ public abstract class Kontener
 
     }
 
-    public void Oproznienie()
+    public virtual void Oproznienie()
     {
         Masa = 0;
     }
@@ -39,7 +38,7 @@ public abstract class Kontener
         
         if (tempMasa > MaxLadownosc)
         {
-            throw new OverfillException("wartosc przekroczona");
+            throw new OverfillException("przekroczono maksymalną ładowność");
         }
         else
         {
@@ -49,9 +48,8 @@ public abstract class Kontener
 
     public override string ToString()
     {
-        return "Numer seryjny: " + NumerSer + " aktualna masa: " + Masa + " maksymalna ładowność " + MaxLadownosc +
-               " wysokość: " + Wysokosc + " waga własna: " + WagaWlasna + " głębokość: " + Glebokosc + " rodzaj: " +
-               Rodzaj;
+        return "Numer seryjny: " + NumerSer + " aktualna masa ładunku: " + Masa + " kg maksymalna ładowność: " + MaxLadownosc +
+               " kg wysokość: " + Wysokosc + " cm waga własna: " + WagaWlasna + " kg głębokość: " + Glebokosc + " cm ";
     }
     
 }

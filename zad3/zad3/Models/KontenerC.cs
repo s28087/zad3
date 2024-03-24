@@ -70,5 +70,10 @@ public class KontenerC : Kontener
         }
     }
     
+    public override string ToString()
+    {
+        return base.ToString() + " rodzaj przechowywanych produktów: " + RodzajProduktu + " temperatura w kontenerze: " + Temperatura;
+    }
+    
     
 }

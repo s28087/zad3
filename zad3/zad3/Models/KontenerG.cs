@@ -15,22 +15,14 @@ public class KontenerG : Kontener, IHazardNotifier
     {
         Console.WriteLine("Niebezpieczna sytuacja w kontenerze numer " + id);
     }
-
-    public void Oproznienie()
+    
+    public override void Oproznienie()
     {
-        Masa = 0;
-    }
-
-    public string toString()
-    {
-        return base.ToString() + " ciśnienie: " + Cisnienie;
+        Masa = Masa * 0.95;
     }
     
-    /*public override void Zaladowanie(double kg)
+    public override string ToString()
     {
-        base.Zaladowanie(kg);
-        
-        
-        
-    }*/
+        return base.ToString() + " ciśnienie: " + Cisnienie + " atmosfer";
+    }
 }

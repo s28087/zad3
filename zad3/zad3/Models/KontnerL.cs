@@ -8,16 +8,13 @@ public enum TypLadunku
     Zwykły
 }
 
-
-
-//ładunek zwykły (mleko) i niebezpieczny (paliwo)
 public class KontnerL : Kontener, IHazardNotifier
 {
 
-    private TypLadunku typLadunku;
+    private TypLadunku TypLadunku;
     public KontnerL(double maxLadownosc, double wysokosc, double wagaWlasna, double glebokosc, TypLadunku typLadunku) : base(maxLadownosc, wysokosc, wagaWlasna, glebokosc, 'L')
     {
-        this.typLadunku = typLadunku;
+        TypLadunku = typLadunku;
     }
     
     public void Ostrzezenie()
@@ -26,40 +23,43 @@ public class KontnerL : Kontener, IHazardNotifier
         Console.WriteLine("Przekroczono dozwolona masę");
     }
 
-    public void Zaladowanie(double kg)
+    public override void Zaladowanie(double kg)
     {
         double tempMasa = Masa + kg;
         
-        if (typLadunku == TypLadunku.Niebezpieczny)
+        if (TypLadunku == TypLadunku.Niebezpieczny)
         {
             if (tempMasa > (0.5 * MaxLadownosc))
             {
                 Ostrzezenie();
-                Console.WriteLine("Wcześniejsza masa: " + Masa);
-                Masa = tempMasa * 0.5;
-                Console.WriteLine("Aktualna masa: " + Masa);
+                //Console.WriteLine("Wcześniejsza masa: " + Masa);
+                //Masa = tempMasa * 0.5;
+                //Console.WriteLine("Aktualna masa: " + Masa);
                 
             }
             else
             {
                 Masa = tempMasa;
             }
-        }else if (typLadunku == TypLadunku.Zwykły)
+        }else if (TypLadunku == TypLadunku.Zwykły)
         {
             if (tempMasa > (0.9 * MaxLadownosc))
             {
                 Ostrzezenie();
-                Console.WriteLine("Wcześniejsza masa: " + Masa);
-                Masa = tempMasa * 0.9;
-                Console.WriteLine("Aktualna masa: " + Masa);
-
-                Ostrzezenie();
+                //Console.WriteLine("Wcześniejsza masa: " + Masa);
+                //Masa = tempMasa * 0.9;
+                //Console.WriteLine("Aktualna masa: " + Masa);
             }
             else
             {
                 Masa = tempMasa;
             }
         }
+    }
+    
+    public override string ToString()
+    {
+        return base.ToString() + " typ ładunku: " + TypLadunku;
     }
     
 }
