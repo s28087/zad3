@@ -6,7 +6,7 @@ public abstract class Kontener
     
     //dostep i modyfikacja (gettery i setteryz javy)
     protected double MaxLadownosc { get; set; }
-    protected double Masa { get; set; }
+    public double Masa { get; set; }
     protected double Wysokosc { get; set; }
     protected double WagaWlasna { get; set; }
     protected double Glebokosc { get; set; }
@@ -14,14 +14,11 @@ public abstract class Kontener
     public int id { get; set; }
     public string NumerSer;
     private char Rodzaj { get; set; }
-    
-
-    //ZMIEN ZEBY RODZAJ BYLO AUTOMATYCZNE NA PODSTAWIE KLASY
-    public Kontener(double maxLadownosc,double masa, double wysokosc, double wagaWlasna,
+  
+    public Kontener(double maxLadownosc, double wysokosc, double wagaWlasna,
         double glebokosc, char rodzaj)
     {
         MaxLadownosc = maxLadownosc;
-        Masa = masa;
         Wysokosc = wysokosc;
         WagaWlasna = wagaWlasna;
         Glebokosc = glebokosc;
@@ -48,6 +45,13 @@ public abstract class Kontener
         {
             Masa = tempMasa;
         }
+    }
+
+    public override string ToString()
+    {
+        return "Numer seryjny: " + NumerSer + " aktualna masa: " + Masa + " maksymalna ładowność " + MaxLadownosc +
+               " wysokość: " + Wysokosc + " waga własna: " + WagaWlasna + " głębokość: " + Glebokosc + " rodzaj: " +
+               Rodzaj;
     }
     
 }

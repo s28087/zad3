@@ -13,10 +13,9 @@ public enum TypLadunku
 //ładunek zwykły (mleko) i niebezpieczny (paliwo)
 public class KontnerL : Kontener, IHazardNotifier
 {
-    
-    //ZMIENIC NA ENUM
+
     private TypLadunku typLadunku;
-    public KontnerL(double maxLadownosc, double masa, double wysokosc, double wagaWlasna, double glebokosc, char rodzaj, TypLadunku typLadunku) : base(maxLadownosc, masa, wysokosc, wagaWlasna, glebokosc, rodzaj)
+    public KontnerL(double maxLadownosc, double wysokosc, double wagaWlasna, double glebokosc, TypLadunku typLadunku) : base(maxLadownosc, wysokosc, wagaWlasna, glebokosc, 'L')
     {
         this.typLadunku = typLadunku;
     }

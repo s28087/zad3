@@ -22,7 +22,7 @@ public class KontenerC : Kontener
     private RodzajProduktu RodzajProduktu;
     private double Temperatura;
     
-    public KontenerC(double maxLadownosc, double masa, double wysokosc, double wagaWlasna, double glebokosc, char rodzaj, RodzajProduktu rodzajProduktu, double temperatura) : base(maxLadownosc, masa, wysokosc, wagaWlasna, glebokosc, rodzaj)
+    public KontenerC(double maxLadownosc, double wysokosc, double wagaWlasna, double glebokosc, RodzajProduktu rodzajProduktu, double temperatura) : base(maxLadownosc,  wysokosc, wagaWlasna, glebokosc, 'C')
     {
         RodzajProduktu = rodzajProduktu;
         Temperatura = temperatura;
@@ -35,9 +35,9 @@ public class KontenerC : Kontener
     {
         double temp = PobranieTemperatury();
 
-        if (Temperatura > temp)
+        if (Temperatura < temp)
         {
-            throw new Exception("temperatura kontenera jest za wysoka na ten rodzaj produktu");
+            throw new Exception("temperatura kontenera jest za niska na ten rodzaj produktu");
         }
     }
 
@@ -69,5 +69,6 @@ public class KontenerC : Kontener
                 throw new NotSupportedException("zły rodzaj produktu");
         }
     }
+    
     
 }
