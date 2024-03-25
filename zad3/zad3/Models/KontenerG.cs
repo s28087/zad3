@@ -18,7 +18,7 @@ public class KontenerG : Kontener, IHazardNotifier
     
     public override void Oproznienie()
     {
-        Masa = Masa * 0.95;
+        Masa = Masa * 0.05;
     }
     
     public override string ToString()

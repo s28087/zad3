@@ -87,6 +87,10 @@ class zad3 {
             Console.WriteLine();
             Console.WriteLine("wypisanie informacji o danym statku i jego ładunku");
             Console.WriteLine(kontenerowiec2);
+            
+            //kontener5.Zaladowanie(500);
+            //kontener5.Oproznienie();
+            //Console.WriteLine(kontener5);
 
         } 
     }
